@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register Now</title>
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <a href="index.html">Main Page</a>
+                <a href="best-movies.html">Best Movies</a>
+                <a href="sign-up.html">Sign up</a>
+            </nav>
+        </header>
+        <hr>
+        <h1>Please fill out the form completely.</h1>
+        <hr>
+        <h2>Account information</h2>
+
+        <table>
+            <tr>
+                <td style="width: 120px;"><label for="username">Username: </label></td>
+                <td style="width: 50px;"></td>
+                <td><input type="text" id="username" placeholder="enter username"></td>
+            </tr>
+
+            <tr>
+                <td><label for="e-mail">Email: </label></td>
+                <td style="width: 50px;"></td>
+                <td><input type="email" id="e-mail" placeholder="enter Email"></td>
+            </tr>
+
+            <tr>
+                <td><label for="passw">Password: </label></td>
+                <td style="width: 50px;"></td>
+                <td><input type="password" id="passw" placeholder="enter password"></td>
+            </tr>
+        </table>
+
+        <h2>Personal information</h2>
+
+        <table>
+            <tr>
+                <td style="width: 120px;"><label for="name">Name: </label></td>
+                <td style="width: 50px;"></td>
+                <td><input type="text" id="name" placeholder="enter name"></td>
+            </tr>
+
+            <tr>
+                <td><label for="surname">Username: </label></td>
+                <td style="width: 50px;"></td>
+                <td><input type="text" id="surname" placeholder="enter surname"></td>
+            </tr>
+
+            <tr>
+                <td><label for="cities">City: </label></td>
+                <td style="width: 50px;"></td>
+                <td>
+                    <select id="cities">
+                        <option>Choose</option>
+                        <option>Los Angeles</option>
+                        <option>Miami</option>
+                        <option>Detroit</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="gender">Gender:</label></td>
+                <td></td>
+                <td>
+                    <input type="radio" name="genders" id="male">Male
+                    <input type="radio" name="genders" id="female">Female
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="checkbox">Hobbies: </label></td>
+                <td></td>
+                <td>
+                    <input type="checkbox" id="cinema"> Cinema
+                    <input type="checkbox" id="traveling"> Traveling
+                    <input type="checkbox" id="sports"> Sports
+                    <input type="checkbox" id="reading"> Reading
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td><button type="submit">Submit</button></td>
+            </tr>
+
+        </table>
+    </body>
+
+</html>
