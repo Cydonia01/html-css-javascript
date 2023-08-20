@@ -7,23 +7,27 @@
         <title>Floating</title>
         <style>
             #container {
-                text-align: right;
+                background-color: chocolate;
             }
 
             .box {
                 width: 150px;
                 height: 150px;
                 background-color: red;
-                display: inline-block;
+                float: right;
+            }
+
+            #box-1 {
+                float: left;
             }
         </style>
     </head>
 
     <body>
         <div id="container">
-            <div class="box"></div>
-            <div class="box"></div>
-            <div class="box"></div>
+            <div class="box" id="box-1">box 1</div>
+            <div class="box">box 2</div>
+            <div class="box">box 3</div>
         </div>
     </body>
 
