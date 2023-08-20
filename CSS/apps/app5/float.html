@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Float</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            h1 {
+                margin: 0;
+            }
+
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            header,
+            footer {
+                font-size: 30px;
+                font-weight: bold;
+                color: #ffbd35;
+                background-color: #8267be;
+                padding: 15px;
+            }
+
+            .col {
+                float: left;
+                padding: 15px 15px 15px 0;
+            }
+
+            .menu {
+                width: 25%;
+            }
+
+            .menu ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .menu li {
+                padding: 8px;
+                margin-bottom: 8px;
+                background-color: #502064;
+                color: #fff;
+            }
+
+            .menu li:hover {
+                cursor: pointer;
+                background-color: #8267be;
+            }
+
+            .content {
+                width: 75%;
+            }
+
+            .clearfix::after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header class="header">Header</header>
+        <main id="main" class="clearfix">
+            <div class="menu col">
+                <ul>
+                    <li>Html</li>
+                    <li>Css</li>
+                    <li>Javascript</li>
+                </ul>
+            </div>
+
+            <div class="content col">
+                <h1>Web Development Course</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint sunt inventore possimus commodi
+                    facilis laborum sequi perferendis praesentium, eveniet, quis officia amet debitis provident
+                    repellendus ex iusto in quibusdam aperiam!</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias exercitationem nulla magni
+                    recusandae,
+                    iure ratione fugit, quos quam corrupti eos neque quae esse quaerat eum maxime porro doloremque
+                    eaque
+                    laudantium.</p>
+            </div>
+        </main>
+        <footer class="footer">Footer</footer>
+    </body>
+
+</html>
