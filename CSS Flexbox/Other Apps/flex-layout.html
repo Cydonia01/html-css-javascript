@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Flex Layout</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            .header {
+                background-color: goldenrod;
+                padding: 30px;
+                text-align: center;
+                color: #fff;
+            }
+
+            .header h1 {
+                margin-bottom: 10px;
+            }
+
+            .navbar {
+                display: flex;
+                background-color: #333;
+            }
+
+            .navbar a {
+                color: #fff;
+                padding: 16px 20px;
+                text-decoration: none;
+                text-align: center;
+            }
+
+            .navbar a:hover {
+                color: #000;
+                background-color: #ddd;
+            }
+
+            .ph {
+                background-color: #aaa;
+                width: 100%;
+                padding: 20px;
+                margin-top: 10px;
+            }
+
+            #main {
+                display: flex;
+            }
+
+            #sidebar {
+                background-color: #f1f1f1;
+                flex: 25%;
+                padding: 20px;
+            }
+
+            #content {
+                flex: 75%;
+                padding: 20px;
+            }
+
+            .box {
+                margin-bottom: 20px;
+            }
+
+            p {
+                margin: 10px 0;
+            }
+
+            #footer {
+                background-color: goldenrod;
+                padding: 20px;
+                text-align: center;
+                color: #fff;
+            }
+
+            @media (max-width: 700px) {
+
+                #main,
+                .navbar {
+                    flex-direction: column;
+                }
+
+                #content {
+                    order: 1;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Lorem, ipsum.</h1>
+            <p>Lorem, ipsum dolor.</p>
+        </div>
+
+        <div class="navbar">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+            <a href="#">Link 4</a>
+        </div>
+
+        <div id="main">
+
+            <div id="content">
+                <div class="box">
+                    <h3>Lorem, ipsum.</h3>
+                    <div class="ph" style="height: 200px;"></div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum soluta in fugit eos molestias
+                        accusamus iste nisi tenetur cum similique.</p>
+                </div>
+                <div class="box">
+                    <h3>Lorem, ipsum.</h3>
+                    <div class="ph" style="height: 200px;"></div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum soluta in fugit eos molestias
+                        accusamus iste nisi tenetur cum similique.</p>
+                </div>
+                <div class="box">
+                    <h3>Lorem, ipsum.</h3>
+                    <div class="ph" style="height: 200px;"></div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum soluta in fugit eos molestias
+                        accusamus iste nisi tenetur cum similique.</p>
+                </div>
+                <div class="box">
+                    <h3>Lorem, ipsum.</h3>
+                    <div class="ph" style="height: 200px;"></div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum soluta in fugit eos molestias
+                        accusamus iste nisi tenetur cum similique.</p>
+                </div>
+            </div>
+
+            <div id="sidebar">
+
+                <div class="box">
+                    <h3>Lorem, ipsum.</h3>
+                    <div class="ph" style="height: 200px;"></div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum soluta in fugit eos molestias
+                        accusamus iste nisi tenetur cum similique.</p>
+                </div>
+
+                <div class="ph" style="height: 50px;">
+                </div>
+                <div class="ph" style="height: 50px;">
+                </div>
+                <div class="ph" style="height: 50px;">
+                </div>
+
+            </div>
+        </div>
+
+        <div id="footer">
+            Lorem, ipsum dolor.
+        </div>
+    </body>
+
+</html>
