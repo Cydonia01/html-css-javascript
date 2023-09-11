@@ -1,86 +1,106 @@
-function Question(text, options, answer) {
-    this.text = text;
-    this.options = options;
-    this.answer = answer;
-}
-
-Question.prototype.checkAnswer = function(answer) {
-        return answer == this.answer;
-    }
-
-let questions = [
-    new Question("Which one is a Javascript package management application?", {a: "Node.js", b:"Typescript", c: "Npm", d: "Nuget"}, "c"),
-    new Question("Which one is a .net package management application?", {a: "Node.js", b:"Nuget", c: "Npm"}, "b")
-]
-
-function Quiz(questions) {
-    this.questions = questions;
-    this.questionIndex = 0;
-}
-
-Quiz.prototype.takeQuestion = function() {
-    return this.questions[this.questionIndex];
-}
-
 const quiz = new Quiz(questions);
+const ui = new UI();
 
-document.querySelector(".btn_start").addEventListener("click", function() {
-    document.querySelector(".quiz_box").classList.add("active");
-
-    displayQuestion(quiz.takeQuestion());
-    document.querySelector(".next_btn").classList.remove("show");
+ui.btn_start.addEventListener("click", function() {
+    ui.quiz_box.classList.add("active");
+    startTimer(9);
+    startTimeLine();
+    ui.displayQuestion(quiz.takeQuestion());
+    ui.displayQuestionNumber(quiz.questionIndex + 1, quiz.questions.length);
+    ui.btn_next.classList.remove("show");
 });
 
-document.querySelector(".next_btn").addEventListener("click", function() {
+ui.btn_next.addEventListener("click", function() {
     if (quiz.questions.length != quiz.questionIndex + 1) {
         quiz.questionIndex++;
-        displayQuestion(quiz.takeQuestion());
-        document.querySelector(".next_btn").classList.remove("show");
+        clearInterval(counter);
+        clearInterval(counterLine);
+        startTimer(9);
+        startTimeLine();
+        ui.displayQuestion(quiz.takeQuestion());
+        ui.displayQuestionNumber(quiz.questionIndex + 1, quiz.questions.length);
+        ui.btn_next.classList.remove("show");
     } else {
+        clearInterval(counter);
+        clearInterval(counterLine);
         console.log("quiz is over");
+        ui.quiz_box.classList.remove("active");
+        ui.score_box.classList.add("active");
+        ui.displayScore(quiz.questions.length, quiz.correctAnswerNumber);
     }
-})
+});
 
-const option_list = document.querySelector(".option_list");
-const correctIcon = '<div class="icon"><i class="fas fa-check"></i></div>';
-const incorrectIcon = '<div class="icon"><i class="fas fa-times"></i></div>'
+ui.btn_quit.addEventListener("click", function() {
+    window.location.reload();
+});
 
-function displayQuestion(question) {
-    let tempQuestion = `<span>${question.text}</span>`;
-    let options = "";
-    for (let answer in question.options) {
-        options += `
-            <div class="option">
-                <span><b>${answer}</b>: ${question.options[answer]}</span>
-            </div>
-        `;
-    }
-
-    document.querySelector(".question_text").innerHTML = tempQuestion;
-    
-    option_list.innerHTML = options;
-
-    const option = option_list.querySelectorAll(".option");
-
-    for (let opt of option) {
-        opt.setAttribute("onclick","optionSelected(this)");
-    }
-}
+ui.btn_replay.addEventListener("click", function() {
+    quiz.questionIndex = 0;
+    quiz.correctAnswerNumber = 0;
+    ui.btn_start.click();
+    ui.score_box.classList.remove("active");
+});
 
 function optionSelected(option) {
+    clearInterval(counter);
+    clearInterval(counterLine);
     let answer = option.querySelector("span b").textContent;
     let question = quiz.takeQuestion();
 
     if (question.checkAnswer(answer)) {
+        quiz.correctAnswerNumber += 1;
         option.classList.add("correct");
-        option.insertAdjacentHTML("beforeend", correctIcon);
+        option.insertAdjacentHTML("beforeend", ui.correctIcon);
     } else  {
         option.classList.add("incorrect");
-        option.insertAdjacentHTML("beforeend", incorrectIcon);
+        option.insertAdjacentHTML("beforeend", ui.incorrectIcon);
     }
 
-    for (let i = 0; i < option_list.children.length; i++) {
-        option_list.children[i].classList.add("disabled");
+    for (let i = 0; i < ui.option_list.children.length; i++) {
+        ui.option_list.children[i].classList.add("disabled");
     }
-    document.querySelector(".next_btn").classList.add("show");
+    ui.btn_next.classList.add("show");
+}
+
+let counter;
+function startTimer(time) {
+    counter = setInterval(timer, 1000);
+
+    function timer() {
+        ui.time_second.textContent = time;
+        time--;
+
+        if (time < 0) {
+            clearInterval(counter);
+            
+            ui.time_text.textContent = "Time up";
+
+            let answer = quiz.takeQuestion().answer;
+
+            for (let option of ui.option_list.children) {
+                if (option.querySelector("span b").textContent == answer) {
+                    option.classList.add("correct");
+                    option.insertAdjacentHTML("beforeend", ui.correctIcon);
+                }
+                option.classList.add("disabled");
+            }
+            ui.btn_next.classList.add("show");
+        }
+    }
+}
+
+let counterLine;
+function startTimeLine() {
+    let line_width = 0;
+    
+    counterLine = setInterval(timer, 20);
+
+    function timer() {
+        line_width += 1;
+        ui.time_line.style.width = line_width + "px";
+
+        if (line_width > 549) {
+            clearInterval(counterLine);
+        }
+    }
 }

@@ -18,6 +18,11 @@
         <div class="card quiz_box">
             <header class="card-header">
                 <div class="title">Quiz App</div>
+                <div class="timer">
+                    <div class="time_text">Remaining Time</div>
+                    <div class="time_second">10</div>
+                    <div class="time_line"></div>
+                </div>
             </header>
             <section class="card-body">
                 <div class="question_text">
@@ -43,11 +48,26 @@
                 </div>
             </section>
             <footer class="card-footer">
+                <div class="question_index">
+
+                </div>
                 <button class="next_btn btn btn-primary btm-sm">Next Question</button>
             </footer>
         </div>
 
+        <div class="card score_box">
+            <div class="icon"><i class="fas fa-crown"></i></div>
+            <div class="score_text"></div>
+            <div class="buttons">
+                <button class="btn btn-primary btn_replay">Replay</button>
+                <button class="btn btn-primary btn_quit">Finish Quiz</button>
+            </div>
+        </div>
 
+
+        <script src="question.js"></script>
+        <script src="quiz.js"></script>
+        <script src="ui.js"></script>
         <script src="script.js"></script>
 
     </body>
