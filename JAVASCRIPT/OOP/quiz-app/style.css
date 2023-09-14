@@ -23,11 +23,7 @@
     pointer-events: none;
 }
 
-.quiz_box header .title {
-    font-size: 20px;
-    font-weight: 600;
-}
-
+.quiz_box header .title,
 .quiz_box .question_text {
     font-size: 20px;
     font-weight: 600;
@@ -129,7 +125,6 @@
     bottom: 0;
     left: 0;
     height: 4px;
-    /* width: 550px; 0 - 550*/ 
     background-color: #f0a500;
 }
 

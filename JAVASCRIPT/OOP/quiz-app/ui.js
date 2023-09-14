@@ -16,16 +16,16 @@ function UI() {
 UI.prototype.displayQuestion = function(question) {
     let tempQuestion = `<span>${question.text}</span>`;
     let options = "";
-    for (let answer in question.options) {
+
+    for (let option in question.options) {
         options += `
             <div class="option">
-                <span><b>${answer}</b>: ${question.options[answer]}</span>
+                <span><b>${option}</b>: ${question.options[option]}</span>
             </div>
         `;
     }
 
     document.querySelector(".question_text").innerHTML = tempQuestion;
-    
     this.option_list.innerHTML = options;
 
     const option = this.option_list.querySelectorAll(".option");
@@ -36,13 +36,11 @@ UI.prototype.displayQuestion = function(question) {
 }
 
 UI.prototype.displayQuestionNumber = function(order, total) {
-    let tag = `<span class="badge bg-warning">${order} / ${total}</span>
-    `
+    let tag = `<span class="badge bg-warning">${order} / ${total}</span>`;
     document.querySelector(".quiz_box .question_index").innerHTML = tag;
 }
 
 UI.prototype.displayScore = function(total, correct) {
-    let tag = `${correct} out of ${total} questions are correct.
-    `;
+    let tag = `${correct} out of ${total} questions are correct.`;
     document.querySelector(".score_box .score_text").innerHTML = tag;
 }

@@ -3,29 +3,37 @@ const ui = new UI();
 
 ui.btn_start.addEventListener("click", function() {
     ui.quiz_box.classList.add("active");
+
     startTimer(9);
     startTimeLine();
+
     ui.displayQuestion(quiz.takeQuestion());
     ui.displayQuestionNumber(quiz.questionIndex + 1, quiz.questions.length);
+
     ui.btn_next.classList.remove("show");
 });
 
 ui.btn_next.addEventListener("click", function() {
     if (quiz.questions.length != quiz.questionIndex + 1) {
         quiz.questionIndex++;
+
         clearInterval(counter);
         clearInterval(counterLine);
+        
         startTimer(9);
         startTimeLine();
+
         ui.displayQuestion(quiz.takeQuestion());
         ui.displayQuestionNumber(quiz.questionIndex + 1, quiz.questions.length);
+        
         ui.btn_next.classList.remove("show");
     } else {
         clearInterval(counter);
         clearInterval(counterLine);
-        console.log("quiz is over");
+        
         ui.quiz_box.classList.remove("active");
         ui.score_box.classList.add("active");
+
         ui.displayScore(quiz.questions.length, quiz.correctAnswerNumber);
     }
 });
@@ -37,6 +45,7 @@ ui.btn_quit.addEventListener("click", function() {
 ui.btn_replay.addEventListener("click", function() {
     quiz.questionIndex = 0;
     quiz.correctAnswerNumber = 0;
+    
     ui.btn_start.click();
     ui.score_box.classList.remove("active");
 });
@@ -44,11 +53,13 @@ ui.btn_replay.addEventListener("click", function() {
 function optionSelected(option) {
     clearInterval(counter);
     clearInterval(counterLine);
+
     let answer = option.querySelector("span b").textContent;
     let question = quiz.takeQuestion();
 
     if (question.checkAnswer(answer)) {
         quiz.correctAnswerNumber += 1;
+
         option.classList.add("correct");
         option.insertAdjacentHTML("beforeend", ui.correctIcon);
     } else  {
@@ -59,11 +70,15 @@ function optionSelected(option) {
     for (let i = 0; i < ui.option_list.children.length; i++) {
         ui.option_list.children[i].classList.add("disabled");
     }
+
     ui.btn_next.classList.add("show");
 }
 
 let counter;
+let counterLine;
+
 function startTimer(time) {
+    ui.time_second.textContent = 10;
     counter = setInterval(timer, 1000);
 
     function timer() {
@@ -78,25 +93,27 @@ function startTimer(time) {
             let answer = quiz.takeQuestion().answer;
 
             for (let option of ui.option_list.children) {
+
                 if (option.querySelector("span b").textContent == answer) {
                     option.classList.add("correct");
                     option.insertAdjacentHTML("beforeend", ui.correctIcon);
                 }
+
                 option.classList.add("disabled");
             }
+
             ui.btn_next.classList.add("show");
         }
     }
 }
 
-let counterLine;
 function startTimeLine() {
     let line_width = 0;
     
     counterLine = setInterval(timer, 20);
 
     function timer() {
-        line_width += 1;
+        line_width += 1.1;
         ui.time_line.style.width = line_width + "px";
 
         if (line_width > 549) {

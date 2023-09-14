@@ -10,7 +10,7 @@ Question.prototype.checkAnswer = function(answer) {
 
 let questions = [
     new Question("Which one is a Javascript package management application?", {a: "Node.js", b:"Typescript", c: "Npm", d: "Nuget"}, "c"),
-    new Question("Which one doesn't use javascript?", {a: "react", b:"angular", c: "vue.js", d: "asp.net"}, "d"),
-    new Question("Which one is not considered within frontend?", {a: "css", b:"html", c: "javascript", d: "sql"}, "d"),
-    new Question("Which one is considered within backend?", {a: "Node.js", b:"typescript", c: "angular", d: "react"}, "a")
+    new Question("Which one is not a Javascript framework ?", {a: "React", b:"Angular", c: "Vue.js", d: "Asp.net"}, "d"),
+    new Question("Which one is not considered within frontend?", {a: "CSS", b:"HTML", c: "Javascript", d: "SQL"}, "d"),
+    new Question("Which one is considered within backend?", {a: "Node.js", b:"Typescript", c: "Angular", d: "React"}, "a")
 ];
