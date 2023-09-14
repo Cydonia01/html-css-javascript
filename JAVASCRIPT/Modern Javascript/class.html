@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Classes</title>
+    </head>
+
+    <body>
+        <script>
+            // function constructor
+            function PersonES5(name, occupation, birthDay) {
+                this.name = name;
+                this.occupation = occupation;
+                this.birthDay = birthDay;
+            }
+
+            PersonES5.prototype.calcAge = function () {
+                let date = new Date().getFullYear();
+                return date - this.birthDay;
+            }
+
+            let john = new PersonES5("John Watson", "student", 1990);
+            let David = new PersonES5("David Watson", "teacher", 1980);
+
+            console.log(john.calcAge());
+            console.log(David.calcAge());
+
+            // class
+            class PersonES6 {
+                constructor(name, occupation, birthDay) {
+                    this.name = name;
+                    this.occupation = occupation;
+                    this.birthDay = birthDay;
+                    console.log("object created");
+                }
+
+                calcAge() {
+                    let date = new Date().getFullYear();
+                    return date - this.birthDay;
+                }
+            }
+
+            let person1 = new PersonES6("Elias Eliesa", "student", 2015);
+            let person2 = new PersonES6("Austin Star", "student", 2012);
+
+            console.log(person1.calcAge());
+            console.log(person2.calcAge());
+        </script>
+    </body>
+
+</html>

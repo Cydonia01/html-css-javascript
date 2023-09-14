@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Arrow function</title>
+    </head>
+
+    <body>
+        <script>
+            // ES 5
+            // function hello() {
+            //     console.log("Hello");
+            // }
+
+            // var helloES5 = function() {
+            //     console.log("Hello " + name);
+            // }
+            // helloES5("john");
+
+            // ES 6 - arrow functoin;
+            // const helloES6 = () => console.log("Hello");
+            // const helloES6 = () => { console.log("Hello " + name); }
+
+            // helloES6("Jimmy");
+
+            // ES5
+            var sumES5 = function (a, b) {
+                return a + b;
+            }
+
+            var result = sumES5(10, 20);
+            console.log(result);
+
+            // ES6
+            // const sumES6 = (a, b) => a + b;
+            const sumES6 = (a, b) => { return a + b };
+
+            result = sumES6(20, 50);
+
+            console.log(result);
+        </script>
+    </body>
+
+</html>

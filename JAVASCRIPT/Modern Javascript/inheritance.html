@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inheritance</title>
+    </head>
+
+    <body>
+        <script>
+            // Person => p1, p2
+            // Student => s1, s2
+            // Teacher => t1, t2
+
+            // parent
+            class Person {
+                constructor(name, birthDay) {
+                    console.log("person constructor");
+                    this.name = name;
+                    this.birthDay = birthDay;
+                }
+
+                calcAge() {
+                    let date = new Date().getFullYear();
+                    return date - this.birthDay;
+                }
+
+                introduce() {
+                    return `my name is ${this.name}`;
+                }
+            }
+
+            // child
+            class Student extends Person {
+                constructor(name, birthDay, schoolID) {
+                    console.log("student constructor");
+                    super(name, birthDay);
+                    this.schoolID = schoolID;
+                }
+
+                study() {
+                    return `${this.name} is studying`;
+                }
+
+                introduce() {
+                    return `my name is ${this.name} and my school id is ${this.schoolID}`;
+                }
+            }
+
+            let person = new Person("john", 1990);
+            let student = new Student("penny", 2000, 13);
+
+            // console.log(person.calcAge());
+            // console.log(student.calcAge());
+            // console.log(student.study());
+
+            console.log(person.introduce());
+            console.log(student.introduce());
+        </script>
+    </body>
+
+</html>
